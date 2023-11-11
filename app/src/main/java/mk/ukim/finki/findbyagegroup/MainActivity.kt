@@ -2,16 +2,23 @@ package mk.ukim.finki.findbyagegroup
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import androidx.core.widget.addTextChangedListener
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import mk.ukim.finki.findbyagegroup.R.id.txtAgeGroup
+import mk.ukim.finki.findbyagegroup.viewmodels.AgeViewModel
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var txtAgeGroup: TextView
     private lateinit var editTextAge: EditText
     private lateinit var btnSubmit: Button
+
+    private lateinit var ageViewModel: AgeViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,21 +28,30 @@ class MainActivity : AppCompatActivity() {
         editTextAge = findViewById(R.id.editTextAge)
         btnSubmit = findViewById(R.id.btnSubmit)
 
+
+        // It's instantiated only once, but everytime the activity is created it uses the same reference.
+        ageViewModel = ViewModelProvider(this)[AgeViewModel::class.java]
+
+        editTextAge.setText(
+            ageViewModel.getAgeValue().toString()
+        ) // For loss, to keep the data saved. (when flipping the phone, etc.)
+
         btnSubmit.setOnClickListener {
-            val ageGroup: String = calcAgeGroup(editTextAge.text.toString().toIntOrNull() ?: -1)
-//            txtAgeGroup.setText(ageGroup) // Does the same as .text = ageGroup
-            txtAgeGroup.text = ageGroup
+            ageViewModel.setAgeValue(editTextAge.text.toString().toIntOrNull() ?: -1)
+            txtAgeGroup.text = ageViewModel.calcAgeGroup() //duplicate
         }
+
+        editTextAge.addTextChangedListener { newText ->
+            ageViewModel.setAgeValue(newText.toString().toIntOrNull() ?: -1)
+            txtAgeGroup.text = ageViewModel.calcAgeGroup() //duplicate
+        }
+
     }
 
-    fun calcAgeGroup(age: Int): String {
-        return when (age) {
-            in 0..14 -> "Child";
-            in 15..24 -> "Youth";
-            in 25..64 -> "Adult";
-            in 65..200 -> "Senior";
-            else -> "Not Known"
-        }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.d("MainActivity", "onDestroy Invoked")
     }
 }
 
