@@ -10,6 +10,7 @@ import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import mk.ukim.finki.findbyagegroup.R.id.txtAgeGroup
+import mk.ukim.finki.findbyagegroup.extensions.toInt
 import mk.ukim.finki.findbyagegroup.viewmodels.AgeViewModel
 
 class MainActivity : AppCompatActivity() {
@@ -37,13 +38,15 @@ class MainActivity : AppCompatActivity() {
         ) // For loss, to keep the data saved. (when flipping the phone, etc.)
 
         btnSubmit.setOnClickListener {
-            ageViewModel.setAgeValue(editTextAge.text.toString().toIntOrNull() ?: -1)
-            txtAgeGroup.text = ageViewModel.calcAgeGroup() //duplicate
+            ageViewModel.setAgeValue(editTextAge.text.toInt())
         }
 
         editTextAge.addTextChangedListener { newText ->
-            ageViewModel.setAgeValue(newText.toString().toIntOrNull() ?: -1)
-            txtAgeGroup.text = ageViewModel.calcAgeGroup() //duplicate
+            ageViewModel.setAgeValue(newText.toInt())
+        }
+
+        ageViewModel.getAge().observe(this) {
+            txtAgeGroup.text = ageViewModel.calcAgeGroup()
         }
 
     }
