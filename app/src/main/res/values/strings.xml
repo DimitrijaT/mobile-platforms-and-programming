@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">FindByAgeGroup</string>
+    <string name="btn_submit">CALCULATE AGE GROUP</string>
+    <string name="country">Macedonia</string>
+</resources>
