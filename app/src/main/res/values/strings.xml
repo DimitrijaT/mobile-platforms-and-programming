@@ -1,6 +1,11 @@
 <resources>
     <string name="app_name">FindByAgeGroup</string>
     <string name="btn_submit">CALCULATE AGE GROUP</string>
-    <string name="country">MPIP APP</string>
+    <string name="country">MPIP Exercises</string>
     <string name="btn_go_to_explicit_activity">GO TO EXPLICIT ACTIVITY</string>
+    <string name="btn_go_to_implicit_activity_open_maps">OPEN MAPS 🗺️</string>
+    <string name="btn_go_to_implicit_activity_send_mail">SEND MAIL 📨</string>
+    <string name="btn_go_to_implicit_activity_calendar">ADD TO CALENDAR 📆</string>
+    <string name="implicit_activities">IMPLICIT ACTIVITIES</string>
+    <string name="btn_go_to_implicit_activity_website">OPEN WEBSITE 🌐</string>
 </resources>
