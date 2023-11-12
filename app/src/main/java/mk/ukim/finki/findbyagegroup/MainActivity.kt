@@ -1,5 +1,6 @@
 package mk.ukim.finki.findbyagegroup
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -18,6 +19,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var txtAgeGroup: TextView
     private lateinit var editTextAge: EditText
     private lateinit var btnSubmit: Button
+    private lateinit var btnGoToExplicitActivity: Button
 
     private lateinit var ageViewModel: AgeViewModel
 
@@ -28,6 +30,7 @@ class MainActivity : AppCompatActivity() {
         txtAgeGroup = findViewById(R.id.txtAgeGroup)
         editTextAge = findViewById(R.id.editTextAge)
         btnSubmit = findViewById(R.id.btnSubmit)
+        btnGoToExplicitActivity = findViewById<Button>(R.id.btnGoToExplicitActivity)
 
 
         // It's instantiated only once, but everytime the activity is created it uses the same reference.
@@ -39,6 +42,13 @@ class MainActivity : AppCompatActivity() {
 
         btnSubmit.setOnClickListener {
             ageViewModel.setAgeValue(editTextAge.text.toInt())
+        }
+
+        btnGoToExplicitActivity.setOnClickListener {
+            Intent(this, ExplicitActivity::class.java).let { i ->
+                i.putExtra("ageGroup", editTextAge.text.toString())
+                startActivity(i)
+            }
         }
 
         editTextAge.addTextChangedListener { newText ->
