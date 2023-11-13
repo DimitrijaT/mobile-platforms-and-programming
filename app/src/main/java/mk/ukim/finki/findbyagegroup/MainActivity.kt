@@ -1,5 +1,7 @@
 package mk.ukim.finki.findbyagegroup
 
+import android.app.Activity
+import android.app.Instrumentation.ActivityResult
 import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
@@ -9,6 +11,8 @@ import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import androidx.activity.result.contract.ActivityResultContract
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.ViewModelProvider
 import mk.ukim.finki.findbyagegroup.extensions.toInt
@@ -28,6 +32,14 @@ class MainActivity : AppCompatActivity() {
     private lateinit var btnGoToCustomImplicitActivity: Button
 
     private lateinit var ageViewModel: AgeViewModel
+
+    private var resultLauncher =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            if (result.resultCode == Activity.RESULT_OK) {
+                val data: Intent? = result.data
+                txtAgeGroup.text = data?.getStringExtra("ageGroup")
+            } //With this we implement a callback function.
+        }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -127,8 +139,10 @@ class MainActivity : AppCompatActivity() {
                 type = "text/plain"
             }.let { intent ->
                 intent.putExtra("ageValue", editTextAge.text.toString())
-//              startActivity(intent) // we are unsure if there is an activity that can deal with our intent.
-                startActivity((Intent.createChooser(intent, "Choose the app for your intent: ")))
+//              startActivity(intent) // We are unsure if there is an activity that can deal with our intent.
+//              startActivity((Intent.createChooser(intent, "Choose the app for your intent: ")))
+
+                resultLauncher.launch(intent) // We use this if we want to get a result from the activity.
             }
         }
 
