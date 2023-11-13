@@ -13,6 +13,16 @@
         android:theme="@style/Theme.FindByAgeGroup"
         tools:targetApi="31">
         <activity
+            android:name=".IntentActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="mk.ukim.finki.age" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="text/plain" />
+            </intent-filter>
+        </activity>
+
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

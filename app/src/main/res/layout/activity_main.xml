@@ -89,4 +89,11 @@
         android:layout_gravity="center"
         android:text="@string/btn_go_to_implicit_activity_website" />
 
+    <Button
+        android:id="@+id/btnGoToCustomImplicitActivity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/btn_go_to_custom_implicit_activity" />
+
 </LinearLayout>

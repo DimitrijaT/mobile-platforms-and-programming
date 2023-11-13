@@ -25,6 +25,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var btnGoToImplicitActivitySendMail: Button
     private lateinit var btnGoToImplicitActivityCalendar: Button
     private lateinit var btnGoToImplicitActivityWebSite: Button
+    private lateinit var btnGoToCustomImplicitActivity: Button
 
     private lateinit var ageViewModel: AgeViewModel
 
@@ -40,7 +41,7 @@ class MainActivity : AppCompatActivity() {
         btnGoToImplicitActivitySendMail = findViewById<Button>(R.id.btnGoToImplicitActivitySendMail)
         btnGoToImplicitActivityCalendar = findViewById<Button>(R.id.btnGoToImplicitActivityCalendar)
         btnGoToImplicitActivityWebSite = findViewById<Button>(R.id.btnGoToImplicitActivityWebSite)
-
+        btnGoToCustomImplicitActivity = findViewById<Button>(R.id.btnGoToCustomImplicitActivity)
 
         // It's instantiated only once, but everytime the activity is created it uses the same reference.
         ageViewModel = ViewModelProvider(this)[AgeViewModel::class.java]
@@ -117,6 +118,18 @@ class MainActivity : AppCompatActivity() {
             val webpage: Uri = Uri.parse("https://www.android.com/")
             val webIntent = Intent(Intent.ACTION_VIEW, webpage)
             startActivity(webIntent)
+        }
+
+        // CUSTOM ACTIVITY WITH IMPLICIT INTENT
+        btnGoToCustomImplicitActivity.setOnClickListener {
+            Intent().apply {
+                action = "mk.ukim.finki.age"
+                type = "text/plain"
+            }.let { intent ->
+                intent.putExtra("ageValue", editTextAge.text.toString())
+//              startActivity(intent) // we are unsure if there is an activity that can deal with our intent.
+                startActivity((Intent.createChooser(intent, "Choose the app for your intent: ")))
+            }
         }
 
         editTextAge.addTextChangedListener { newText ->

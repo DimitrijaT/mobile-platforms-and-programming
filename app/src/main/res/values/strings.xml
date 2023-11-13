@@ -8,4 +8,5 @@
     <string name="btn_go_to_implicit_activity_calendar">ADD TO CALENDAR 📆</string>
     <string name="implicit_activities">IMPLICIT ACTIVITIES</string>
     <string name="btn_go_to_implicit_activity_website">OPEN WEBSITE 🌐</string>
+    <string name="btn_go_to_custom_implicit_activity">GO TO CUSTOM IMPLICIT ACTIVITY</string>
 </resources>
