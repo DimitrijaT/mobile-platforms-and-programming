@@ -30,6 +30,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var btnGoToImplicitActivityCalendar: Button
     private lateinit var btnGoToImplicitActivityWebSite: Button
     private lateinit var btnGoToCustomImplicitActivity: Button
+    private lateinit var btnGoToListView: Button
 
     private lateinit var ageViewModel: AgeViewModel
 
@@ -54,6 +55,7 @@ class MainActivity : AppCompatActivity() {
         btnGoToImplicitActivityCalendar = findViewById<Button>(R.id.btnGoToImplicitActivityCalendar)
         btnGoToImplicitActivityWebSite = findViewById<Button>(R.id.btnGoToImplicitActivityWebSite)
         btnGoToCustomImplicitActivity = findViewById<Button>(R.id.btnGoToCustomImplicitActivity)
+        btnGoToListView = findViewById<Button>(R.id.btnGoToListView)
 
         // It's instantiated only once, but everytime the activity is created it uses the same reference.
         ageViewModel = ViewModelProvider(this)[AgeViewModel::class.java]
@@ -73,6 +75,12 @@ class MainActivity : AppCompatActivity() {
                 startActivity(i)
             }
         }
+
+        // GO TO LIST VIEW
+        btnGoToListView.setOnClickListener {
+            startActivity(Intent(this, ListViewActivity::class.java))
+        }
+
 
         // IMPLICIT INTENT - Opening Maps
         btnGoToImplicitActivityOpenMaps.setOnClickListener {

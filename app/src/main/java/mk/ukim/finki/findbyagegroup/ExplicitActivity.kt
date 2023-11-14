@@ -27,7 +27,6 @@ class ExplicitActivity : AppCompatActivity() {
         val age: String = bundle?.get("ageGroup")?.toString() ?: "N/A"
         ageViewModel.setAgeValue(age.toIntOrNull() ?: -1)
 
-
     }
 }
 

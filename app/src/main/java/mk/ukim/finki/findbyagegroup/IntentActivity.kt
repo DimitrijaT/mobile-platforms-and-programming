@@ -44,6 +44,5 @@ class IntentActivity : AppCompatActivity() {
                 finish()
             }
         }
-
     }
 }
