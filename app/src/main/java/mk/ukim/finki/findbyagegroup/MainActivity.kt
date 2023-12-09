@@ -31,6 +31,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var btnGoToImplicitActivityWebSite: Button
     private lateinit var btnGoToCustomImplicitActivity: Button
     private lateinit var btnGoToListView: Button
+    private lateinit var btnGoToStudentsActivity: Button
+    private lateinit var btnGoToFragmentActivity: Button
 
     private lateinit var ageViewModel: AgeViewModel
 
@@ -56,6 +58,8 @@ class MainActivity : AppCompatActivity() {
         btnGoToImplicitActivityWebSite = findViewById<Button>(R.id.btnGoToImplicitActivityWebSite)
         btnGoToCustomImplicitActivity = findViewById<Button>(R.id.btnGoToCustomImplicitActivity)
         btnGoToListView = findViewById<Button>(R.id.btnGoToListView)
+        btnGoToStudentsActivity = findViewById<Button>(R.id.btnGoToStudentsActivity)
+        btnGoToFragmentActivity = findViewById<Button>(R.id.btnGoToFragmentActivity)
 
         // It's instantiated only once, but everytime the activity is created it uses the same reference.
         ageViewModel = ViewModelProvider(this)[AgeViewModel::class.java]
@@ -63,6 +67,12 @@ class MainActivity : AppCompatActivity() {
         editTextAge.setText(
             ageViewModel.getAgeValue().toString()
         ) // For loss, to keep the data saved. (when flipping the phone, etc.)
+
+
+        // GO TO FRAGMENT ACTIVITY
+        btnGoToFragmentActivity.setOnClickListener {
+            startActivity(Intent(this, FragmentExampleActivity::class.java))
+        }
 
         btnSubmit.setOnClickListener {
             ageViewModel.setAgeValue(editTextAge.text.toInt())
@@ -79,6 +89,11 @@ class MainActivity : AppCompatActivity() {
         // GO TO LIST VIEW
         btnGoToListView.setOnClickListener {
             startActivity(Intent(this, ListViewActivity::class.java))
+        }
+
+        // GO TO STUDENTS ACTIVITY
+        btnGoToStudentsActivity.setOnClickListener {
+            startActivity(Intent(this, StudentsListActivity::class.java))
         }
 
 

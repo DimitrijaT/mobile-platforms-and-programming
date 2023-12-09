@@ -56,10 +56,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="@string/implicit_activities"
         android:paddingTop="20dp"
-        android:textSize="20sp"
-        />
+        android:text="@string/implicit_activities"
+        android:textSize="20sp" />
 
     <Button
         android:id="@+id/btnGoToImplicitActivityOpenMaps"
@@ -102,10 +101,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="@string/Lists"
         android:paddingTop="20dp"
-        android:textSize="20sp"
-        />
+        android:text="@string/Lists"
+        android:textSize="20sp" />
 
     <Button
         android:id="@+id/btnGoToListView"
@@ -114,5 +112,29 @@
         android:layout_gravity="center"
         android:text="@string/btn_go_listview" />
 
+    <Button
+        android:id="@+id/btnGoToStudentsActivity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/btn_go_students_activity" />
+
+
+    <TextView
+        android:id="@+id/fragment_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:paddingTop="20dp"
+        android:text="@string/fragment_title"
+        android:textSize="20sp" />
+
+
+    <Button
+        android:id="@+id/btnGoToFragmentActivity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/btn_go_to_fragment_example_activity" />
 
 </LinearLayout>

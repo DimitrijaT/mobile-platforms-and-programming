@@ -11,4 +11,10 @@
     <string name="btn_go_to_custom_implicit_activity">GO TO CUSTOM IMPLICIT ACTIVITY</string>
     <string name="Lists">List Views</string>
     <string name="btn_go_listview">Go to ListView 📃</string>
+    <string name="btn_go_students_activity">Go to StudentView 👨🏻‍🎓🏫👩🏻‍🎓</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="welcome_first_fragment">Welcome to the First Fragment!</string>
+    <string name="fragment_title">Fragments</string>
+    <string name="btn_go_to_fragment_example_activity">Go to Fragment Example 🧩</string>
 </resources>
