@@ -41,7 +41,6 @@ class FirstFragment : Fragment(R.layout.fragment_first) {
         // Forward us from the first fragment to the second fragment
         // We must use fragment manager from the parent activity
         binding.btnGoToSecondFragment.setOnClickListener {
-
             nicknameViewModel.selectNickname(binding.editNickname.text.toString())
             parentFragmentManager.commit {
                 replace(R.id.fragment_container_view, SecondFragment())

@@ -29,6 +29,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var btnGoToImplicitActivitySendMail: Button
     private lateinit var btnGoToImplicitActivityCalendar: Button
     private lateinit var btnGoToImplicitActivityWebSite: Button
+    private lateinit var customImplicitActivityGettingResultBackField: TextView
     private lateinit var btnGoToCustomImplicitActivity: Button
     private lateinit var btnGoToListView: Button
     private lateinit var btnGoToStudentsActivity: Button
@@ -41,7 +42,9 @@ class MainActivity : AppCompatActivity() {
             if (result.resultCode == Activity.RESULT_OK) {
                 val data: Intent? = result.data
                 txtAgeGroup.text = data?.getStringExtra("ageGroup")
-            } //With this we implement a callback function.
+                customImplicitActivityGettingResultBackField.text =
+                    data?.getStringExtra("ageGroup")
+            } //With this we implement a custom activity that returns a result.
         }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -60,6 +63,8 @@ class MainActivity : AppCompatActivity() {
         btnGoToListView = findViewById<Button>(R.id.btnGoToListView)
         btnGoToStudentsActivity = findViewById<Button>(R.id.btnGoToStudentsActivity)
         btnGoToFragmentActivity = findViewById<Button>(R.id.btnGoToFragmentActivity)
+        customImplicitActivityGettingResultBackField =
+            findViewById<TextView>(R.id.customImplicitActivityGettingResultBackField)
 
         // It's instantiated only once, but everytime the activity is created it uses the same reference.
         ageViewModel = ViewModelProvider(this)[AgeViewModel::class.java]

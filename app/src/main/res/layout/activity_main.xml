@@ -12,9 +12,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:paddingTop="20dp"
+        android:paddingStart="20dp"
+        android:paddingTop="10dp"
+        android:paddingEnd="20dp"
+        android:paddingBottom="15dp"
         android:text="@string/country"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        android:textStyle="bold|italic" />
 
     <TextView
         android:layout_width="match_parent"
@@ -87,6 +91,14 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="@string/btn_go_to_implicit_activity_website" />
+
+    <TextView
+        android:id="@+id/customImplicitActivityGettingResultBackField"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="" />
+
 
     <Button
         android:id="@+id/btnGoToCustomImplicitActivity"

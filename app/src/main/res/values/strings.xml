@@ -1,14 +1,14 @@
 <resources>
     <string name="app_name">FindByAgeGroup</string>
-    <string name="btn_submit">CALCULATE AGE GROUP</string>
-    <string name="country">MPIP Exercises</string>
-    <string name="btn_go_to_explicit_activity">GO TO EXPLICIT ACTIVITY</string>
-    <string name="btn_go_to_implicit_activity_open_maps">OPEN MAPS 🗺️</string>
-    <string name="btn_go_to_implicit_activity_send_mail">SEND MAIL 📨</string>
-    <string name="btn_go_to_implicit_activity_calendar">ADD TO CALENDAR 📆</string>
-    <string name="implicit_activities">IMPLICIT ACTIVITIES</string>
-    <string name="btn_go_to_implicit_activity_website">OPEN WEBSITE 🌐</string>
-    <string name="btn_go_to_custom_implicit_activity">GO TO CUSTOM IMPLICIT ACTIVITY</string>
+    <string name="btn_submit">Calculate Age Group</string>
+    <string name="country"><u>Mobile Platforms and Programming</u></string>
+    <string name="btn_go_to_explicit_activity">Go to Explicit Activity</string>
+    <string name="btn_go_to_implicit_activity_open_maps">Open Maps 🗺️</string>
+    <string name="btn_go_to_implicit_activity_send_mail">Send Mail 📨</string>
+    <string name="btn_go_to_implicit_activity_calendar">Add to Calendar 📆</string>
+    <string name="implicit_activities">Implicit Activities</string>
+    <string name="btn_go_to_implicit_activity_website">Open Website 🌐</string>
+    <string name="btn_go_to_custom_implicit_activity">Go to Custom Implicit Activity</string>
     <string name="Lists">List Views</string>
     <string name="btn_go_listview">Go to ListView 📃</string>
     <string name="btn_go_students_activity">Go to StudentView 👨🏻‍🎓🏫👩🏻‍🎓</string>
@@ -17,5 +17,18 @@
     <string name="welcome_first_fragment">Welcome to the First Fragment!</string>
     <string name="fragment_title">Fragments</string>
     <string name="btn_go_to_fragment_example_activity">Go to Fragment Example 🧩</string>
-    <string name="btn_go_to_second_fragment">Go to Second Fragment 🚶🏻‍♂️🧩</string>
+    <string name="btn_go_to_second_fragment">Go to Second Fragment ➡️️🧩</string>
+    <string name="explicitActivityDesc">You are currently located in the Explicit Activity Layout. The value of the age group has been carried here too.</string>
+    <string name="implicitActivityDesc">You are currently located in the Implicit Activity Layout. The value of the age group has been carried here too. The difference between explicit intent and implicit intent is that instead of telling the intent the name of the activity, we tell the intent the action and type of data we are sending. </string>
+
+    <string name="btn_go_back">Go Back To Calculate Age Group 🏠</string>
+
+    <string name="androidManifestImplicitIntent"><![CDATA[<activity\n            android:name=\".IntentActivity\"\n            android:exported=\"true\">\n            <intent-filter>\n                <action android:name=\"mk.ukim.finki.age\" />\n\n                <category android:name=\"android.intent.category.DEFAULT\" />\n\n                <data android:mimeType=\"text/plain\" />\n            </intent-filter>\n        </activity>]]></string>
+    <string name="implicitCodeBlock"><![CDATA["        btnGoToCustomImplicitActivity.setOnClickListener {\n            Intent().apply {\n                action = \"mk.ukim.finki.age\"\n                type = \"text/plain\"\n            }.let { intent ->\n                intent.putExtra(\"ageValue\", editTextAge.text.toString())\n                resultLauncher.launch(intent)\n            }\n        }"]]></string>
+    <string name="implicitActivityButtonDesc">The button additionally sends data back to the main Activity.</string>
+    <string name="explicitCodeBlock"><![CDATA["        btnGoToExplicitActivity.setOnClickListener {\n            Intent(this, ExplicitActivity::class.java).let { i ->\n                i.putExtra(\"ageGroup\", editTextAge.text.toString())\n                startActivity(i)\n            }\n        }"]]></string>
+    <string name="FirstFragmentCode">binding.btnGoToSecondFragment.setOnClickListener {\n            nicknameViewModel.selectNickname(binding.editNickname.text.toString())\n            parentFragmentManager.commit {\n                replace(R.id.fragment_container_view, SecondFragment())\n                setReorderingAllowed(true)\n              addToBackStack(null)\n            }\n        }</string>
+    <string name="firstFragmentDesc">We are currently in the FirstFragment! But once the button is pressed the code below will be run. It will replace this fragment with the SecondFragment and additionally it will set the Nickname from the EditText field. These 2 fragments communicate through a shared Activity ViewModel.</string>
+    <string name="secondFragmentDesc">We are currently in the SecondFragment! This fragment only showcases that we have successfully transferred the data from the EditText field to here! </string>
+    <string name="codeTextViewCallback"><![CDATA[private var resultLauncher =\n        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->\n            if (result.resultCode == Activity.RESULT_OK) {\n                val data: Intent? = result.data\n customImplicitActivityGettingResultBackField.text =\n                    data?.getStringExtra(\"ageGroup\")\n            }\n        }]]></string>
 </resources>
