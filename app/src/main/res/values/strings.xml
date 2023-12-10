@@ -29,6 +29,12 @@
     <string name="explicitCodeBlock"><![CDATA["        btnGoToExplicitActivity.setOnClickListener {\n            Intent(this, ExplicitActivity::class.java).let { i ->\n                i.putExtra(\"ageGroup\", editTextAge.text.toString())\n                startActivity(i)\n            }\n        }"]]></string>
     <string name="FirstFragmentCode">binding.btnGoToSecondFragment.setOnClickListener {\n            nicknameViewModel.selectNickname(binding.editNickname.text.toString())\n            parentFragmentManager.commit {\n                replace(R.id.fragment_container_view, SecondFragment())\n                setReorderingAllowed(true)\n              addToBackStack(null)\n            }\n        }</string>
     <string name="firstFragmentDesc">We are currently in the FirstFragment! But once the button is pressed the code below will be run. It will replace this fragment with the SecondFragment and additionally it will set the Nickname from the EditText field. These 2 fragments communicate through a shared Activity ViewModel.</string>
-    <string name="secondFragmentDesc">We are currently in the SecondFragment! This fragment only showcases that we have successfully transferred the data from the EditText field to here! </string>
+    <string name="secondFragmentDesc">We are currently in the SecondFragment! This fragment showcases that we have successfully transferred the data from the EditText field to here! Additionally we have 2 Buttons here that open up Dialogs.</string>
     <string name="codeTextViewCallback"><![CDATA[private var resultLauncher =\n        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->\n            if (result.resultCode == Activity.RESULT_OK) {\n                val data: Intent? = result.data\n customImplicitActivityGettingResultBackField.text =\n                    data?.getStringExtra(\"ageGroup\")\n            }\n        }]]></string>
+
+    <string name="simple_dialog_title">Are you sure about this operation? 🤔</string>
+    <string name="ok">OK</string>
+    <string name="cancel">CANCEL</string>
+    <string name="btn_open_simple_dialog">Open Simple Dialog 🗨️</string>
+    <string name="btn_open_nickname_dialog">Open Nickname Dialog 🗯️</string>
 </resources>

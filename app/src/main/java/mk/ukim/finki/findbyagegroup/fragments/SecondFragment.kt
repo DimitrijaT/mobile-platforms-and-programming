@@ -9,6 +9,8 @@ import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import mk.ukim.finki.findbyagegroup.R
 import mk.ukim.finki.findbyagegroup.databinding.FragmentSecondBinding
+import mk.ukim.finki.findbyagegroup.dialogs.NicknameDialogFragment
+import mk.ukim.finki.findbyagegroup.dialogs.SimpleDialogFragment
 import mk.ukim.finki.findbyagegroup.viewmodels.NicknameViewModel
 
 
@@ -30,6 +32,17 @@ class SecondFragment : Fragment(R.layout.fragment_second) {
 
         nicknameViewModel.nickname.observe(viewLifecycleOwner) {
             binding.txtMyNickname.text = it
+        }
+
+        binding.btnOpenSimpleDialog.setOnClickListener {
+            // We show the dialog
+            // We use childFragmentManager because we are in a fragment
+            // The tag is used to identify the dialog
+            SimpleDialogFragment().show(childFragmentManager, "SimpleDialogFragment")
+        }
+
+        binding.btnOpenNicknameDialog.setOnClickListener {
+            NicknameDialogFragment().show(childFragmentManager, "NicknameDialogFragment")
         }
 
     }
